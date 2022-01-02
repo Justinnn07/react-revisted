@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import Home from "./Home";
-import Data from "./Data";
 import axios from "axios";
-
+import "./App.css";
 function App() {
-  // const [counter, setCounter] = useState(0);
-  // function GlobalFunction(a) {
-  //   if (a === "-") {
-  //     setCounter(counter - 1);
-  //   } else {
-  //     setCounter(counter + 1);
-  //   }
-  // }
+  const [counter, setCounter] = useState(0);
+  function GlobalFunction(a) {
+    if (a === "-") {
+      setCounter(counter - 1);
+    } else {
+      setCounter(counter + 1);
+    }
+  }
 
   // const [todo, setTodo] = useState({});
   const [todo, setTodo] = useState([]);
@@ -26,11 +25,11 @@ function App() {
   const filteredArray = todo.filter((res) => res.title.includes(filter));
 
   return (
-    <div>
+    <div className="app">
       {/* {Data.map((name, index) => {
         return <Home name={name.name} key={index} />;
       })} */}
-      {/* <div style={{ display: "flex" }} className="app__a">
+      <div style={{ display: "flex" }} className="app__a">
         <h1 style={{ cursor: "pointer" }} onClick={() => GlobalFunction("-")}>
           -
         </h1>
@@ -41,9 +40,9 @@ function App() {
         >
           +
         </h1>
-      </div> */}
+      </div>
 
-      <button onClick={fetchData}>Fetch</button>
+      {todo.length !== 0 ? null : <button onClick={fetchData}>Fetch</button>}
       <input
         type="text"
         value={filter}
